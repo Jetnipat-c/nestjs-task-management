@@ -1,4 +1,4 @@
-import { Controller, Get, Post, Body, Param, Delete, Patch, Query } from '@nestjs/common';
+import { Controller, Get, Post, Body, Param, Delete, Patch, Query, UsePipes, ValidationPipe } from '@nestjs/common';
 import { TasksService } from './tasks.service';
 import { Task, TaskStatus } from './task.model';
 import { CreateTaskDto } from './dto/create-task.dto';
@@ -16,7 +16,6 @@ export class TasksController {
        else {
            return this.tasksService.getAllTasks();
        }
-       return this.tasksService.getAllTasks();
     } 
 
     @Get('/:id')
@@ -25,6 +24,7 @@ export class TasksController {
     } 
 
     @Post()
+    @UsePipes(ValidationPipe)
     createTasks(@Body() createTasksDto: CreateTaskDto): Task {
         return this.tasksService.createTasks(createTasksDto);
     }
