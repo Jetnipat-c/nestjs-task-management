@@ -1,5 +1,6 @@
-import { TypeOrmModuleOptions } from '@nestjs/typeorm';
-export const typeOrmConfig: TypeOrmModuleOptions =  {
+import { TypeOrmModule } from "@nestjs/typeorm";
+
+export const typeOrmConfig: TypeOrmModule = {
     type: 'mariadb',
     host: 'localhost',
     port: 3306,
