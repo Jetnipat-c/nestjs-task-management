@@ -32,7 +32,7 @@ export class TasksController {
     updateTaskStatus(
         @Param('id') id: string,
         @Body('status') status: TaskStatus
-    ){
+    ): Task{
         console.log('id',id)
         console.log('status',status)
         return this.tasksService.updateTaskStatus(id,status);
