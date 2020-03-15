@@ -14,25 +14,27 @@ export class TasksController {
     } 
 
     @Get('/:id')
-    getTaskById(@Param('id')id:string){
+    getTaskById(@Param('id') id:string): Task{
        return this.tasksService.getTaskById(id);
     } 
 
     @Post()
-    createTasks(@Body() createTasksDto: CreateTaskDto):Task {
+    createTasks(@Body() createTasksDto: CreateTaskDto): Task {
         return this.tasksService.createTasks(createTasksDto);
     }
 
     @Delete('/:id')
-    deleteTask(@Param('id') id: string){
+    deleteTask(@Param('id') id: string): void{
         this.tasksService.deleteTask(id);
     }
     
     @Patch('/:id/status')
     updateTaskStatus(
-        @Param('id')id:string,
-        @Param('status')status:TaskStatus,
-    ): Task{
+        @Param('id') id: string,
+        @Body('status') status: TaskStatus
+    ){
+        console.log('id',id)
+        console.log('status',status)
         return this.tasksService.updateTaskStatus(id,status);
     }
 }
