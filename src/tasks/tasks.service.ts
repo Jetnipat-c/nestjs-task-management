@@ -12,6 +12,10 @@ export class TasksService {
         private taskRepositoy: TaskRepository,
     
     ) {}
+
+    async getTasks(filterDto: GetTasksFilterDto){
+        return this.taskRepositoy.getTasks(filterDto);
+    }
     // getAllTasks(): Task[]{
     //     return this.tasks;
     // }
